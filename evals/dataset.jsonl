@@ -1,0 +1,30 @@
+{"question": "Phí quản lý tài khoản thanh toán là bao nhiêu?", "expected_doc": "bieu-phi-dich-vu.md", "must_contain": ["11.000"]}
+{"question": "Số dư bình quân bao nhiêu thì được miễn phí quản lý tài khoản?", "expected_doc": "bieu-phi-dich-vu.md", "must_contain": ["2.000.000"]}
+{"question": "Đóng tài khoản sau 6 tháng mở có mất phí không?", "expected_doc": "bieu-phi-dich-vu.md", "must_contain": ["50.000"]}
+{"question": "Chuyển khoản liên ngân hàng trên app có mất phí không?", "expected_doc": "bieu-phi-dich-vu.md", "must_contain": ["miễn phí"]}
+{"question": "Hạn mức chuyển khoản mỗi ngày trên app mặc định là bao nhiêu?", "expected_doc": "bieu-phi-dich-vu.md", "must_contain": ["1.000.000.000"]}
+{"question": "Chuyển khoản liên ngân hàng tại quầy tính phí thế nào?", "expected_doc": "bieu-phi-dich-vu.md", "must_contain": ["0,03%"]}
+{"question": "Rút tiền ở ATM ngân hàng khác mất bao nhiêu?", "expected_doc": "bieu-phi-dich-vu.md", "must_contain": ["3.300"]}
+{"question": "Phí SMS Banking hàng tháng?", "expected_doc": "bieu-phi-dich-vu.md", "must_contain": ["11.000"]}
+{"question": "Giao dịch từ bao nhiêu tiền thì phải xác thực khuôn mặt?", "expected_doc": "bieu-phi-dich-vu.md", "must_contain": ["10.000.000"]}
+{"question": "Phí thường niên thẻ tín dụng Gold là bao nhiêu?", "expected_doc": "dieu-khoan-the-tin-dung.md", "must_contain": ["599.000"]}
+{"question": "Thu nhập tối thiểu để mở thẻ Platinum?", "expected_doc": "dieu-khoan-the-tin-dung.md", "must_contain": ["40 triệu"]}
+{"question": "Thẻ tín dụng được miễn lãi tối đa bao nhiêu ngày?", "expected_doc": "dieu-khoan-the-tin-dung.md", "must_contain": ["55"]}
+{"question": "Lãi suất thẻ Classic nếu không trả đủ dư nợ?", "expected_doc": "dieu-khoan-the-tin-dung.md", "must_contain": ["32%"]}
+{"question": "Phí rút tiền mặt bằng thẻ tín dụng?", "expected_doc": "dieu-khoan-the-tin-dung.md", "must_contain": ["4%"]}
+{"question": "Quẹt thẻ tín dụng ở nước ngoài mất phí chuyển đổi ngoại tệ bao nhiêu?", "expected_doc": "dieu-khoan-the-tin-dung.md", "must_contain": ["2,95%"]}
+{"question": "Thanh toán tối thiểu thẻ tín dụng là bao nhiêu phần trăm dư nợ?", "expected_doc": "dieu-khoan-the-tin-dung.md", "must_contain": ["5%"]}
+{"question": "Tất toán trả góp trước hạn có mất phí không?", "expected_doc": "dieu-khoan-the-tin-dung.md", "must_contain": ["3%"]}
+{"question": "Tôi có bao lâu để khiếu nại một giao dịch thẻ?", "expected_doc": "dieu-khoan-the-tin-dung.md", "must_contain": ["60 ngày"]}
+{"question": "Vay tín chấp theo lương được vay tối đa bao nhiêu?", "expected_doc": "quy-dinh-cho-vay-tieu-dung.md", "must_contain": ["500.000.000"]}
+{"question": "Lãi suất vay tín chấp là bao nhiêu?", "expected_doc": "quy-dinh-cho-vay-tieu-dung.md", "must_contain": ["12%", "18%"]}
+{"question": "Vay mua nhà được vay tối đa bao nhiêu phần trăm giá trị tài sản?", "expected_doc": "quy-dinh-cho-vay-tieu-dung.md", "must_contain": ["70%"]}
+{"question": "Lãi suất ưu đãi vay mua nhà cố định 24 tháng?", "expected_doc": "quy-dinh-cho-vay-tieu-dung.md", "must_contain": ["8,5%"]}
+{"question": "Trả nợ vay mua nhà trước hạn ở năm thứ 2 mất phí bao nhiêu?", "expected_doc": "quy-dinh-cho-vay-tieu-dung.md", "must_contain": ["2%"]}
+{"question": "Vay tín chấp online mất bao lâu để giải ngân?", "expected_doc": "quy-dinh-cho-vay-tieu-dung.md", "must_contain": ["24 giờ"]}
+{"question": "Bao nhiêu tuổi thì được mở tài khoản online?", "expected_doc": "faq-ekyc-mo-tai-khoan.md", "must_contain": ["15 tuổi"]}
+{"question": "Tài khoản mở eKYC có hạn mức bao nhiêu?", "expected_doc": "faq-ekyc-mo-tai-khoan.md", "must_contain": ["100.000.000"]}
+{"question": "Nhập sai mật khẩu bao nhiêu lần thì bị khóa app?", "expected_doc": "faq-ekyc-mo-tai-khoan.md", "must_contain": ["5 lần"]}
+{"question": "Giá vàng SJC hôm nay bao nhiêu?", "expected_doc": null, "must_contain": []}
+{"question": "Lãi suất tiết kiệm kỳ hạn 6 tháng là bao nhiêu?", "expected_doc": null, "must_contain": []}
+{"question": "Ngân hàng có cho vay du học không?", "expected_doc": null, "must_contain": []}
