@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FinRAG Agent</title>
+<style>
+  :root { --bg:#f6f7f9; --card:#fff; --ink:#1b1f24; --muted:#667085; --accent:#0b6e4f; --line:#e4e7ec; }
+  * { box-sizing:border-box; } body { margin:0; font:15px/1.55 system-ui,sans-serif; background:var(--bg); color:var(--ink); }
+  main { max-width:760px; margin:0 auto; padding:16px; display:flex; flex-direction:column; height:100vh; }
+  header { display:flex; justify-content:space-between; align-items:center; gap:8px; }
+  h1 { font-size:18px; margin:0; } #key { width:120px; padding:4px 8px; border:1px solid var(--line); border-radius:6px; }
+  #log { flex:1; overflow:auto; padding:12px 0; }
+  .msg { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:10px 12px; margin:8px 0; white-space:pre-wrap; }
+  .me { background:#e8f3ee; border-color:#cfe6db; margin-left:15%; }
+  .meta { color:var(--muted); font-size:12px; margin-top:6px; }
+  .src { font-size:12px; color:var(--muted); margin-top:6px; } .src span { display:inline-block; background:var(--bg); border:1px solid var(--line); border-radius:999px; padding:1px 8px; margin:2px 4px 0 0; }
+  form { display:flex; gap:8px; } input#q { flex:1; padding:10px 12px; border:1px solid var(--line); border-radius:8px; font:inherit; }
+  button { background:var(--accent); color:#fff; border:0; border-radius:8px; padding:0 16px; font:inherit; cursor:pointer; }
+</style>
+</head>
+<body>
+<main>
+  <header><h1>FinRAG Agent · DemoBank</h1><label>API key <input id="key" value="dev-key"></label></header>
+  <div id="log"></div>
+  <form id="f"><input id="q" autocomplete="off" placeholder="Hỏi về phí, thẻ, khoản vay, eKYC…"><button>Gửi</button></form>
+</main>
+<script>
+const log = document.getElementById('log'); let threadId = null;
+function bubble(cls, text) { const d = document.createElement('div'); d.className = 'msg ' + cls; d.textContent = text; log.append(d); log.scrollTop = log.scrollHeight; return d; }
+document.getElementById('f').onsubmit = async (e) => {
+  e.preventDefault(); const q = document.getElementById('q'); const message = q.value.trim(); if (!message) return;
+  q.value = ''; bubble('me', message); const out = bubble('', '');
+  const res = await fetch('/v1/chat', { method:'POST', headers:{ 'Content-Type':'application/json', 'X-API-Key':document.getElementById('key').value }, body:JSON.stringify({ message, thread_id:threadId }) });
+  if (!res.ok) { out.textContent = 'Lỗi ' + res.status; return; }
+  const reader = res.body.getReader(); const dec = new TextDecoder(); let buf = '';
+  while (true) {
+    const { value, done } = await reader.read(); if (done) break; buf += dec.decode(value, { stream:true });
+    let i; while ((i = buf.indexOf('\n\n')) >= 0) {
+      const block = buf.slice(0, i); buf = buf.slice(i + 2);
+      const ev = /event: (.*)/.exec(block)[1]; const data = JSON.parse(/data: (.*)/.exec(block)[1]);
+      if (ev === 'meta') threadId = data.thread_id;
+      if (ev === 'token') { out.textContent += data.text; log.scrollTop = log.scrollHeight; }
+      if (ev === 'error') out.textContent = data.message;
+      if (ev === 'sources' && data.sources.length) { const s = document.createElement('div'); s.className = 'src'; s.innerHTML = 'Nguồn: '; data.sources.forEach(x => { const t = document.createElement('span'); t.textContent = x.citation; s.append(t); }); out.append(s); }
+      if (ev === 'done') { const m = document.createElement('div'); m.className = 'meta';
+        m.textContent = data.blocked ? 'Đã chặn bởi guardrail: ' + data.reason : `${data.cached ? '⚡ cache · ' : ''}${data.latency_ms} ms · ${data.input_tokens + data.output_tokens} tokens · $${data.cost_usd}`; out.append(m); }
+    }
+  }
+};
+</script>
+</body>
+</html>
